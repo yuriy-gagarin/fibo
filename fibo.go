@@ -31,6 +31,7 @@ var sqrt5 = math.Sqrt(5)
 
 // FiboBinet returns nth fibo number
 // https://en.wikipedia.org/wiki/Fibonacci_number#Closed-form_expression
+// Innacurate at large Ns due to floating point stuff
 func FiboBinet(n uint) uint {
 	if n < 2 {
 		return n
@@ -44,6 +45,7 @@ func FiboBinet(n uint) uint {
 
 // FiboBinet2 returns nth fibo number
 // https://en.wikipedia.org/wiki/Fibonacci_number#Computation_by_rounding
+// Innacurate at large Ns due to floating point stuff
 func FiboBinet2(n uint) uint {
 	if n < 2 {
 		return n
@@ -55,7 +57,8 @@ func FiboBinet2(n uint) uint {
 }
 
 // FiboBinet3 returns nth fibo number
-// F_n = round(phi*F_n-1)
+// uses identity F_n = round(phi*F_n-1)
+// Innacurate at large Ns due to floating point stuff
 func FiboBinet3(n uint) uint {
 	if n < 2 {
 		return n
@@ -70,7 +73,7 @@ func FiboBinet3(n uint) uint {
 }
 
 // FiboRec2 returns nth fibo number
-// this uses the identity F_2n+1 = (F_n+1)^2 + (F_n)^2
+// Faster recursive solution using identity F_2n+1 = (F_n+1)^2 + (F_n)^2
 func FiboRec2(n uint) uint {
 	return fiboRec2(n, make(map[uint]uint))
 }
